@@ -1,7 +1,7 @@
-#环境
+# 环境
 Requires Java 1.8+ and Maven 3.x+
 
-#使用方法
+# 使用方法
 1.下载
 git clone https://git.oschina.net/0d/Struts2_bugs.git
 
@@ -19,7 +19,7 @@ mvn clean package
 将\target中生成的Struts2_bugs-0.0.1-SNAPSHOT.war复制到Tomcat下的webapps目录中，然后开启Tomcat
 
 
-#相关信息
+# 相关信息
 1.S2-005
 CVE-2010-1870
 影响版本：Struts 2.0.0 – Struts 2.1.8.1 
