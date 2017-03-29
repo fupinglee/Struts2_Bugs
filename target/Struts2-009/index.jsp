@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>S2-005</title>
+    <title>S2-009</title>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -21,7 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    <a href="https://cwiki.apache.org/confluence/display/WW/S2-005">S2-005</a> <br>
+    <a href="https://cwiki.apache.org/confluence/display/WW/S2-009">S2-009</a> <br>
     <a href="index.action">index.action</a> <br>
   </body>
 </html>
