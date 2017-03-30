@@ -19,8 +19,4 @@
   	<filter-name>struts2</filter-name>
   	<url-pattern>*.action</url-pattern>
   </filter-mapping>  
-  <filter-mapping>  
-    <filter-name>struts2</filter-name>  
-    <url-pattern>*.jsp</url-pattern>  
-</filter-mapping> 
 </web-app>

