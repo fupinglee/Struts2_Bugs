@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -9,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>S2-009</title>
+    <title>S2-013</title>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -21,7 +22,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    <a href="https://cwiki.apache.org/confluence/display/WW/S2-009">S2-009</a> <br>
-    <a href="index.action">index.action</a> <br>
+    <a href="https://cwiki.apache.org/confluence/display/WW/S2-013">S2-013</a> <br>
+    
+    <s:a includeParams="all" action="index.action">index.action</s:a>
   </body>
 </html>
