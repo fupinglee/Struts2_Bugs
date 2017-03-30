@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.multipart.parser" value="jakarta-stream" />
+	<package name="/" extends="struts-default" namespace="/">
+	
+		<action name="index" class="com.fuping.action.IndexAction" method="execute">
+			<result name="success">/index.jsp</result>
+		</action>
+	</package>
+	
+</struts> 

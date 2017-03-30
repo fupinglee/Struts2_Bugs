@@ -4,7 +4,7 @@
   <groupId>com.fuping</groupId>
   <artifactId>Struts2</artifactId>
   <packaging>war</packaging>
-  <version>045</version>
+  <version>046</version>
   <name>Struts2_Bugs</name>
   <url>http://maven.apache.org</url>
   	<dependencies>
@@ -53,5 +53,5 @@
 
 	</build>
 
-	<description>S2-045</description>
+	<description>S2-046</description>
 </project>

